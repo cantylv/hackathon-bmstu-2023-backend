@@ -3,7 +3,7 @@ const axios = require('axios'); // для асинхронных запросо�
 const app = express(); // Создание экземпляра приложения Express
 const PORT = process.env.PORT || 3000; // присвоения порта
 const targetUrl = "http://127.0.0.1:3001/station_change"
-const interval = 500; // миллисекунды 
+const interval = 1000; // миллисекунды 
 
 app.use(express.json()); // middleware для более простого парсинга тела запроса post 
 
@@ -54,7 +54,7 @@ class Stations {
   }
 }
 
-stat = new Stations('R2D2', 0, 0, 5, 8, 100); // наш марсоход 
+stat = new Stations('R2D2', 0, 0, 40, 0, 100); // наш марсоход 
 
 app.post('/update', (req, res) => {
   const data = req.body;

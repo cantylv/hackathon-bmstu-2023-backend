@@ -21,93 +21,19 @@ export const getStations = ()=>{
      });
    };
 
- export const postStation = (body,id) => {
+ export const postStation = (body) => {
      return new Promise(function (resolve, reject) {
       console.log();
       pool.query(
-        "insert into stations (x,y,v,dir, charge) values($1,$2,$3, $4,$5)",[body.x, body.y, body.v, body.dir, body.charge]
-        [change, product_id],
+        "insert into stations (x,y,v,dir, charge) values($1,$2,$3, $4,$5)",
+        [body.x, body.y, body.v, body.diraction, body.charge],
         (error, results) => {
           if (error) {
             reject(error);
             console.log(error);
           }
-          resolve(`Название изменено на ${change}`);
+          resolve(results.rows);
         }
       );
-      /*const { property, change, product_id } = body;
-       console.log();
-       if (property === "product_name")
-         pool.query(
-           "UPDATE products SET product_name = $1 WHERE product_id = $2",
-           [change, product_id],
-           (error, results) => {
-             if (error) {
-               reject(error);
-               console.log(error);
-             }
-             resolve(`Название изменено на ${change}`);
-           }
-         );
-       if (property === "category")
-         pool.query(
-           "UPDATE products SET category = $1 WHERE product_id = $2",
-           [change, product_id],
-           (error, results) => {
-             if (error) {
-               reject(error);
-               console.log(error);
-             }
-             resolve(`Категория изменена на ${change}`);
-           }
-         );
-       if (property === "price")
-         pool.query(
-           "UPDATE products SET price = $1 WHERE product_id = $2",
-           [change, product_id],
-           (error, results) => {
-             if (error) {
-               reject(error);
-               console.log(error);
-             }
-             resolve(`Цена изменена на ${change}`);
-           }
-         );
-       if (property === "protein")
-         pool.query(
-           "UPDATE products SET protein = $1 WHERE product_id = $2",
-           [change, product_id],
-           (error, results) => {
-             if (error) {
-               reject(error);
-               console.log(error);
-             }
-             resolve(`Белки изменены на ${change}`);
-           }
-         );
-       if (property === "fats")
-         pool.query(
-           "UPDATE products SET fats = $1 WHERE product_id = $2",
-           [change, product_id],
-           (error, results) => {
-             if (error) {
-               reject(error);
-               console.log(error);
-             }
-             resolve(`Жиры изменены на ${change}`);
-           }
-         );
-       if (property === "carbs")
-         pool.query(
-           "UPDATE products SET carbs = $1 WHERE product_id = $2",
-           [change, product_id],
-           (error, results) => {
-             if (error) {
-               reject(error);
-               console.log(error);
-             }
-             resolve(`Углеводы изменены на ${change}`);
-           }
-         );*/
      });
    };
