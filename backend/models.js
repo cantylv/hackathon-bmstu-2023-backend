@@ -25,7 +25,7 @@ export const getStations = ()=>{
      return new Promise(function (resolve, reject) {
       console.log();
       pool.query(
-        "UPDATE stations SET v = $1 WHERE id = $2",
+        "insert into stations (x,y,v,dir, charge) values($1,$2,$3, $4,$5)",[body.x, body.y, body.v, body.dir, body.charge]
         [change, product_id],
         (error, results) => {
           if (error) {
